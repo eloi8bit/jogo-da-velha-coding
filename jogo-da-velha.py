@@ -38,3 +38,33 @@ for i in range(3):
     if i < 2: 
         print("     ---+---+---")
 print()
+
+# [MARIA CLARA] MENU PRINCIPAL
+print("==============================================")
+print("     JOGO DA VELHA - CAMPEONATO MELHOR DE N")
+print("==============================================")
+
+
+
+menu_ativo = True
+while menu_ativo == True:
+    print()
+    print("----------------- MENU -----------------")
+    print("1 - Jogar campeonato (melhor de 3 ou melhor de 5)")
+    print("2 - Ver regras")
+    print("3 - Ver placar")
+    print("4 - Sair")
+
+    opcao_valida = False
+    while opcao_valida == False:
+        entrada = input("Escolha uma opção (1 a 4): ")
+
+        for n in range(1, 5):
+            if entrada == str(n):
+                opcao_valida = True
+                opcao = n
+
+        if opcao_valida == False:
+            print("Entrada inválida! Digite um número de 1 a 4.")
+        
+
