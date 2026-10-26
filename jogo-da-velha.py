@@ -14,4 +14,18 @@ tabuleiro = [
     [" ", " ", " "]
 ]
 
-print(tabuleiro)
+print(tabuleiro) 
+
+# [BLOCO 1B - MARIA CLARA] VARIÁVEIS DA  SESSÃO (PLACAR ACUMULADO E ESTATÍSTICAS).
+vitorias_x = 0           #vitorias do jogador X.
+vitorias_o = 0           #vitorias do jogador O.
+empates = 0
+total_partidas = 0
+campeonatos_x = 0        #serie de campeonatos vencidos por X.
+campeonatos_O = 0        #serie de campeonatos vencidos por O.
+sequencia_x = 0          #vitorias consecutivas de X.
+sequencia_o = 0          #vitorias consecutivas de O.
+maior_sequencia_x = 0
+maior_sequencia_o = 0
+inicia_x = True          #indica que "X" começa.
+
