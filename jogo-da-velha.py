@@ -39,6 +39,29 @@ for i in range(3):
         print("     ---+---+---")
 print()
 
+# [HELOÍSA] LIMPEZA DA MATRIZ
+tabuleiro[1][1] = "X"
+print(tabuleiro)
+
+for i in range(3):
+    for j in range(3):
+        tabuleiro[i][j] = " "
+
+print(tabuleiro)
+
+# [HELOÍSA] LEITURA DA JOGADA COM VALIDAÇÃO
+linha_valida = False
+while linha_valida == False:
+    entrada = input("Escolha a LINHA (1 a 3): ")
+    for n in range(1, 4):
+        if entrada == str(n):
+            linha_valida = True
+            linha = n - 1 
+    if linha_valida == False:
+        print("Entrada inválida! Digite um número de 1 a 3.")
+
+print(f"Linha escolhida (índice): {linha}")
+
 # [MARIA CLARA] MENU PRINCIPAL
 print("==============================================")
 print("     JOGO DA VELHA - CAMPEONATO MELHOR DE N")
