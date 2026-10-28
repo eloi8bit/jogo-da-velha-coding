@@ -40,27 +40,45 @@ for i in range(3):
 print()
 
 # [HELOÍSA] LIMPEZA DA MATRIZ
-tabuleiro[1][1] = "X"
-print(tabuleiro)
 
 for i in range(3):
     for j in range(3):
         tabuleiro[i][j] = " "
 
-print(tabuleiro)
-
 # [HELOÍSA] LEITURA DA JOGADA COM VALIDAÇÃO
-linha_valida = False
-while linha_valida == False:
-    entrada = input("Escolha a LINHA (1 a 3): ")
-    for n in range(1, 4):
-        if entrada == str(n):
-            linha_valida = True
-            linha = n - 1 
-    if linha_valida == False:
-        print("Entrada inválida! Digite um número de 1 a 3.")
+simbolo = "X"
+tabuleiro[1][1] = "O"
 
-print(f"Linha escolhida (índice): {linha}")
+jogada_valida = False
+while jogada_valida == False:
+    
+    linha_valida = False
+    while linha_valida == False:
+        entrada = input("Escolha a LINHA (1 a 3): ")
+        for n in range(1, 4):
+            if entrada == str(n):
+                linha_valida = True
+                linha = n - 1 
+        if linha_valida == False:
+            print("Entrada inválida! Digite um número de 1 a 3.")
+
+    coluna_valida = False
+    while coluna_valida == False:
+        entrada = input("Escolha a COLUNA (1 a 3): ")
+        for n in range(1, 4):
+            if entrada == str(n):
+                coluna_valida = True
+                coluna = n - 1
+        if coluna_valida == False:
+            print("Entrada inválida! Digite um número de 1 a 3.")
+
+    if linha >= 0 and linha <= 2 and coluna >= 0 and coluna <= 2 and tabuleiro[linha][coluna] == " ":
+        tabuleiro[linha][coluna] = simbolo
+        jogada_valida = True
+    else:
+        print("Casa já ocupada! Escolha outra casa.")
+
+print(tabuleiro)
 
 # [MARIA CLARA] MENU PRINCIPAL
 print("==============================================")
