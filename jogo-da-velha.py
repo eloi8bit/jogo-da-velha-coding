@@ -125,6 +125,93 @@ while menu_ativo == True:
 
         print(f"Série melhor de {melhor_de}: vence quem fizer {vitorias_necessarias} vitórias primeiro.")
 
+        # [MARIA LETÍCIA] B2 - LAÇO DA PARTIDA
+        # Controle de turno e contador de rodadas
+
+        for i in range(3):
+            for j in range(3):
+                tabuleiro[i][j] = " "
+
+        rodadas = 0
+        partida_terminou = False
+        venceu = False
+        vez_de_x = True
+
+        while partida_terminou == False:
+
+            # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
+            print()
+            print("      1   2   3")
+
+            for i in range(3):
+                print(f"  {i + 1}  ", end="")
+
+                for j in range(3):
+                    print(f" {tabuleiro[i][j]} ", end="")
+
+                    if j < 2:
+                        print("|", end="")
+
+                print()
+
+                if i < 2:
+                    print("     ---+---+---")
+
+            # [MARIA LETÍCIA] INDICADOR DO JOGADOR
+            if vez_de_x == True:
+                simbolo = "X"
+            else:
+                simbolo = "O"
+
+            print(f"Rodada {rodadas + 1} - Vez do jogador {simbolo}")
+
+            # [MARIA LETÍCIA] LEITURA E VALIDAÇÃO DA JOGADA
+            jogada_valida = False
+
+            while jogada_valida == False:
+                linha_valida = False
+
+                while linha_valida == False:
+                    entrada = input("Escolha a LINHA (1 a 3): ")
+
+                    for n in range(1, 4):
+                        if entrada == str(n):
+                            linha = n - 1
+                            linha_valida = True
+
+                    if linha_valida == False:
+                        print("Entrada inválida! Digite um número de 1 a 3.")
+
+                coluna_valida = False
+
+                while coluna_valida == False:
+                    entrada = input("Escolha a COLUNA (1 a 3): ")
+
+                    for n in range(1, 4):
+                        if entrada == str(n):
+                            coluna = n - 1
+                            coluna_valida = True
+
+                    if coluna_valida == False:
+                        print("Entrada inválida! Digite um número de 1 a 3.")
+
+                if tabuleiro[linha][coluna] == " ":
+                    tabuleiro[linha][coluna] = simbolo
+                    jogada_valida = True
+                else:
+                    print("Casa já ocupada! Escolha outra casa.")
+
+            # [MARIA LETÍCIA] CONTADOR E ALTERNÂNCIA
+            rodadas += 1
+            vez_de_x = not vez_de_x
+
+            # Parada temporária após 9 rodadas
+            if rodadas == 9:
+                partida_terminou = True
+
+        print("Partida encerrada após 9 rodadas.")
+
+
     elif opcao == 2:
         # [MARIA CLARA] - REGRAS DO JOGO
         print()
