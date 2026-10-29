@@ -125,7 +125,7 @@ while menu_ativo == True:
 
         print(f"Série melhor de {melhor_de}: vence quem fizer {vitorias_necessarias} vitórias primeiro.")
 
-        # [MARIA LETÍCIA] B2 - LAÇO DA PARTIDA
+        # [MARIA LETÍCIA] - LAÇO DA PARTIDA
         # Controle de turno e contador de rodadas
 
         for i in range(3):
