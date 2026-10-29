@@ -77,15 +77,13 @@ while jogada_valida == False:
         jogada_valida = True
     else:
         print("Casa já ocupada! Escolha outra casa.")
-
-print(tabuleiro)
-
+        
+print(tabuleiro)     
+           
 # [MARIA CLARA] MENU PRINCIPAL
 print("==============================================")
 print("     JOGO DA VELHA - CAMPEONATO MELHOR DE N")
 print("==============================================")
-
-
 
 menu_ativo = True
 while menu_ativo == True:
@@ -109,3 +107,44 @@ while menu_ativo == True:
             print("Entrada inválida! Digite um número de 1 a 4.")
         
 
+
+    if opcao == 1:
+        # [MARIA CLARA] - ESCOLHA DA SÉRIE
+        serie_valida = False
+
+        while serie_valida == False:
+            entrada = input("Escolha a série (3 = melhor de 3 | 5 = melhor de 5): ")
+
+            if entrada == "3" or entrada == "5":
+                melhor_de = int(entrada)
+                serie_valida = True
+            else:
+                print("Entrada inválida! Digite 3 ou 5.")
+
+        vitorias_necessarias = int(melhor_de / 2) + 1
+
+        print(f"Série melhor de {melhor_de}: vence quem fizer {vitorias_necessarias} vitórias primeiro.")
+
+    elif opcao == 2:
+        # [MARIA CLARA] - REGRAS DO JOGO
+        print()
+        print("-------------------- REGRAS --------------------")
+        print("1. O tabuleiro tem 3 linhas e 3 colunas.")
+        print("2. Dois jogadores se alternam: X e O.")
+        print("3. Informe a linha e a coluna de uma casa vazia.")
+        print("4. Vence quem completar uma linha, coluna ou diagonal.")
+        print("5. Se o tabuleiro encher sem vencedor, ocorre empate.")
+        print("6. Melhor de 3: vence quem ganhar 2 partidas.")
+        print("7. Melhor de 5: vence quem ganhar 3 partidas.")
+        print("------------------------------------------------")
+
+    elif opcao == 3:
+        # [MARIA CLARA] EXIBIÇÃO DO PLACAR
+        print(f"Partidas jogadas: {total_partidas}")
+        print(f"Vitórias de X: {vitorias_x}")
+        print(f"Vitórias de O: {vitorias_o}")
+        print(f"Empates: {empates}")
+
+    elif opcao == 4:
+        print("Obrigado por jogar!")
+        menu_ativo = False
