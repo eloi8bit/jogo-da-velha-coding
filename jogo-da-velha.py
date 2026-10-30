@@ -201,15 +201,41 @@ while menu_ativo == True:
                 else:
                     print("Casa já ocupada! Escolha outra casa.")
 
+            # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
+            venceu = False
+  
+            for i in range(3):
+
+                # Verifica vitória na linha
+                if (tabuleiro[i][0] == simbolo and
+                    tabuleiro[i][1] == simbolo and
+                    tabuleiro[i][2] == simbolo):
+                    venceu = True
+
+                # Verifica vitória na coluna
+                if (tabuleiro[0][i] == simbolo and
+                    tabuleiro[1][i] == simbolo and
+                    tabuleiro[2][i] == simbolo):
+                    venceu = True
+
+            if venceu == True:
+                partida_terminou = True
+                print(f"Jogador {simbolo} venceu!")
+
             # [MARIA LETÍCIA] CONTADOR E ALTERNÂNCIA
             rodadas += 1
-            vez_de_x = not vez_de_x
 
-            # Parada temporária após 9 rodadas
+            if venceu == False:
+                vez_de_x = not vez_de_x
+
+            # Parada após 9 rodadas
             if rodadas == 9:
                 partida_terminou = True
 
-        print("Partida encerrada após 9 rodadas.")
+        if venceu == True:
+            print("Partida encerrada com vitória!")
+        else:
+            print("Partida encerrada após 9 rodadas.")
 
 
     elif opcao == 2:
