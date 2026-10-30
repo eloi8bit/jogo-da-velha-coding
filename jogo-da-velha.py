@@ -18,7 +18,7 @@ vitorias_o = 0
 empates = 0
 total_partidas = 0
 campeonatos_x = 0
-campeonatos_O = 0
+campeonatos_o = 0
 sequencia_x = 0
 sequencia_o = 0
 maior_sequencia_x = 0
@@ -232,12 +232,33 @@ while menu_ativo == True:
             if rodadas == 9:
                 partida_terminou = True
 
+        # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
+        total_partidas += 1
+
         if venceu == True:
-            print("Partida encerrada com vitória!")
+            print(f"*** Jogador {simbolo} venceu a partida em {rodadas} rodadas! ***")
+
+            if simbolo == "X":
+                vitorias_x += 1
+                sequencia_x += 1
+                sequencia_o = 0
+
+                if sequencia_x > maior_sequencia_x:
+                    maior_sequencia_x = sequencia_x
+
+            else:
+                vitorias_o += 1
+                sequencia_o += 1
+                sequencia_x = 0
+
+                if sequencia_o > maior_sequencia_o:
+                    maior_sequencia_o = sequencia_o
+
         else:
-            print("Partida encerrada após 9 rodadas.")
-
-
+            print("*** Deu empate! Ninguém pontua na série. ***")
+            empates += 1
+            sequencia_x = 0
+            sequencia_o = 0
     elif opcao == 2:
         # [MARIA CLARA] - REGRAS DO JOGO
         print()
@@ -250,14 +271,25 @@ while menu_ativo == True:
         print("6. Melhor de 3: vence quem ganhar 2 partidas.")
         print("7. Melhor de 5: vence quem ganhar 3 partidas.")
         print("------------------------------------------------")
-
+        
     elif opcao == 3:
-        # [MARIA CLARA] EXIBIÇÃO DO PLACAR
-        print(f"Partidas jogadas: {total_partidas}")
-        print(f"Vitórias de X: {vitorias_x}")
-        print(f"Vitórias de O: {vitorias_o}")
-        print(f"Empates: {empates}")
+        # [MARIA CLARA] BLOCO 11 - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
+        print()
 
+        if total_partidas == 0:
+            print("Nenhuma partida foi jogada ainda.")
+
+        else:
+            pct_x = vitorias_x / total_partidas * 100
+            pct_o = vitorias_o / total_partidas * 100
+            pct_empates = empates / total_partidas * 100
+
+            print("-------------- PLACAR DA SESSÃO --------------")
+            print(f"Partidas jogadas: {total_partidas}")
+            print(f"X: {vitorias_x} vitórias ({pct_x:.1f}%)")
+            print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
+            print(f"Empates: {empates} ({pct_empates:.1f}%)")
+            print("----------------------------------------------")
     elif opcao == 4:
         print("Obrigado por jogar!")
         menu_ativo = False
