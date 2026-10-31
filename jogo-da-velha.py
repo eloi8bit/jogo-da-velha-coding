@@ -201,9 +201,14 @@ while menu_ativo == True:
                 else:
                     print("Casa já ocupada! Escolha outra casa.")
 
+            
             # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
             venceu = False
-  
+
+            # Contadores das diagonais
+            cont_diagonal_principal = 0
+            cont_diagonal_secundaria = 0
+
             for i in range(3):
 
                 # Verifica vitória na linha
@@ -218,9 +223,23 @@ while menu_ativo == True:
                     tabuleiro[2][i] == simbolo):
                     venceu = True
 
+                # Verifica diagonal principal
+                if tabuleiro[i][i] == simbolo:
+                    cont_diagonal_principal += 1
+
+                # Verifica diagonal secundária
+                if tabuleiro[i][2 - i] == simbolo:
+                    cont_diagonal_secundaria += 1
+
+            # Verifica se alguma diagonal foi completada
+            if (cont_diagonal_principal == 3 or
+                cont_diagonal_secundaria == 3):
+                venceu = True
+
             if venceu == True:
                 partida_terminou = True
                 print(f"Jogador {simbolo} venceu!")
+
 
             # [MARIA LETÍCIA] CONTADOR E ALTERNÂNCIA
             rodadas += 1
