@@ -202,6 +202,7 @@ while menu_ativo == True:
                     print("Casa já ocupada! Escolha outra casa.")
 
             
+           
             # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
             venceu = False
 
@@ -236,20 +237,28 @@ while menu_ativo == True:
                 cont_diagonal_secundaria == 3):
                 venceu = True
 
+            # [MARIA LETÍCIA] CONTADOR DE RODADAS
+            rodadas += 1
+
+            # [MARIA LETÍCIA] CONTAGEM DE CASAS VAZIAS
+            vazias = 0
+
+            for i in range(3):
+                for j in range(3):
+                    if tabuleiro[i][j] == " ":
+                        vazias += 1
+
+            # [MARIA LETÍCIA] VERIFICAÇÃO DO FIM DA PARTIDA
             if venceu == True:
                 partida_terminou = True
                 print(f"Jogador {simbolo} venceu!")
 
+            elif vazias == 0:
+                partida_terminou = True
 
-            # [MARIA LETÍCIA] CONTADOR E ALTERNÂNCIA
-            rodadas += 1
-
-            if venceu == False:
+            else:
                 vez_de_x = not vez_de_x
 
-            # Parada após 9 rodadas
-            if rodadas == 9:
-                partida_terminou = True
 
         # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
         total_partidas += 1
