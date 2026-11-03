@@ -155,7 +155,10 @@ while menu_ativo == True:
 
                 
             
-                # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
+                # BLOCO 7 - VERIFICAÇÃO DE VITÓRIA
+                # O for percorre as três linhas e colunas do tabuleiro.
+                # Os if verificam se o jogador completou uma linha ou coluna.
+                # Os contadores verificam as duas diagonais.
                 venceu = False
 
                 # Contadores das diagonais
@@ -192,7 +195,11 @@ while menu_ativo == True:
                 # [MARIA LETÍCIA] CONTADOR DE RODADAS
                 rodadas += 1
 
-                # [MARIA LETÍCIA] CONTAGEM DE CASAS VAZIAS
+                # BLOCO 8 - DETECÇÃO DE EMPATE
+                # O primeiro for percorre as linhas do tabuleiro.
+                # O segundo for percorre as colunas de cada linha.
+                # O if verifica se a casa está vazia.
+                # A variável vazias conta as casas não preenchidas.
                 vazias = 0
 
                 for i in range(3):
@@ -200,7 +207,10 @@ while menu_ativo == True:
                         if tabuleiro[i][j] == " ":
                             vazias += 1
 
-                # [MARIA LETÍCIA] VERIFICAÇÃO DO FIM DA PARTIDA
+                # BLOCO 9 - ENCERRAMENTO DA PARTIDA
+                # Se venceu for True, a partida termina por vitória.
+                # Se vazias for igual a zero, ocorre empate.
+                # Caso contrário, o jogador passa a vez.
                 if venceu == True:
                     partida_terminou = True
                     print(f"Jogador {simbolo} venceu!")
