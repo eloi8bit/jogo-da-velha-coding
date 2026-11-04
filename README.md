@@ -35,4 +35,7 @@ Em construção.
 Em construção.
 
 ## Testes
-Em construção.
+Os casos de teste de validação (entradas inválidas, casa ocupada, vitórias,
+empate e série completa) estão documentados em
+[docs/tabela_de_testes.md](docs/tabela_de_testes.md), com a entrada,
+o resultado esperado e o resultado obtido de cada caso.

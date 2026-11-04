@@ -272,7 +272,7 @@ while menu_ativo == True:
         print("------------------------------------------------")
 
     elif opcao == 3:
-        # [MARIA CLARA] BLOCO - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
+        # [MARIA CLARA] - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
         print()
 
         if total_partidas == 0:
