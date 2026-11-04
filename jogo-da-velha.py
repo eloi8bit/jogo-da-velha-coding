@@ -72,169 +72,192 @@ while menu_ativo == True:
         print(f"Série melhor de {melhor_de}: vence quem fizer {vitorias_necessarias} vitórias primeiro.")
         
         #[MARIA CLARA] - INICIALIZAÇÃO DO PLACAR DA SÉRIE
-        serie_x = 0
-        serie_o = 0
+        jogar_campeonato = True
+        while jogar_campeonato == True:
+            serie_x = 0
+            serie_o = 0
         
-        # [MARIA CLARA] - LAÇO DO CAMPEONATO
-        while serie_x < vitorias_necessarias and serie_o < vitorias_necessarias:
+            # [MARIA CLARA] - LAÇO DO CAMPEONATO
+            while serie_x < vitorias_necessarias and serie_o < vitorias_necessarias:
 
-            # [MARIA LETÍCIA] - LAÇO DA PARTIDA
-    
-            for i in range(3):
-                for j in range(3):
-                    tabuleiro[i][j] = " "
-
-            rodadas = 0
-            partida_terminou = False    
-            venceu = False
-            vez_de_x = True
-
-            while partida_terminou == False:
-
-                # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
-                print()
-                print("      1   2   3")
-
+                # [MARIA LETÍCIA] - LAÇO DA PARTIDA
+        
                 for i in range(3):
-                    print(f"  {i + 1}  ", end="")
-
                     for j in range(3):
-                        print(f" {tabuleiro[i][j]} ", end="")
+                        tabuleiro[i][j] = " "
 
-                        if j < 2:
-                            print("|", end="")
-
-                    print()
-
-                    if i < 2:
-                        print("     ---+---+---")
-
-                # [MARIA LETÍCIA] INDICADOR DO JOGADOR
-                if vez_de_x == True:
-                    simbolo = "X"
-                else:
-                    simbolo = "O"
-
-                print(f"Rodada {rodadas + 1} - Vez do jogador {simbolo}")
-
-                # [MARIA LETÍCIA] LEITURA E VALIDAÇÃO DA JOGADA
-                jogada_valida = False
-
-                while jogada_valida == False:
-                    linha_valida = False
-
-                    while linha_valida == False:
-                        entrada = input("Escolha a LINHA (1 a 3): ")
-
-                        for n in range(1, 4):
-                            if entrada == str(n):
-                                linha = n - 1
-                                linha_valida = True
-
-                        if linha_valida == False:
-                            print("Entrada inválida! Digite um número de 1 a 3.")
-
-                    coluna_valida = False
-
-                    while coluna_valida == False:
-                        entrada = input("Escolha a COLUNA (1 a 3): ")
-
-                        for n in range(1, 4):
-                            if entrada == str(n):
-                                coluna = n - 1
-                                coluna_valida = True
-
-                        if coluna_valida == False:
-                            print("Entrada inválida! Digite um número de 1 a 3.")
-
-                    if tabuleiro[linha][coluna] == " ":
-                        tabuleiro[linha][coluna] = simbolo
-                        jogada_valida = True
-                    else:
-                        print("Casa já ocupada! Escolha outra casa.")
-
-                
-            
-                # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
+                rodadas = 0
+                partida_terminou = False    
                 venceu = False
+                vez_de_x = True
 
-                cont_diagonal_principal = 0
-                cont_diagonal_secundaria = 0
+                while partida_terminou == False:
 
-                for i in range(3):
+                    # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
+                    print()
+                    print("      1   2   3")
 
-                    if (tabuleiro[i][0] == simbolo and
-                        tabuleiro[i][1] == simbolo and
-                        tabuleiro[i][2] == simbolo):
+                    for i in range(3):
+                        print(f"  {i + 1}  ", end="")
+
+                        for j in range(3):
+                            print(f" {tabuleiro[i][j]} ", end="")
+
+                            if j < 2:
+                                print("|", end="")
+
+                        print()
+
+                        if i < 2:
+                            print("     ---+---+---")
+
+                    # [MARIA LETÍCIA] INDICADOR DO JOGADOR
+                    if vez_de_x == True:
+                        simbolo = "X"
+                    else:
+                        simbolo = "O"
+
+                    print(f"Rodada {rodadas + 1} - Vez do jogador {simbolo}")
+
+                    # [MARIA LETÍCIA] LEITURA E VALIDAÇÃO DA JOGADA
+                    jogada_valida = False
+
+                    while jogada_valida == False:
+                        linha_valida = False
+
+                        while linha_valida == False:
+                            entrada = input("Escolha a LINHA (1 a 3): ")
+
+                            for n in range(1, 4):
+                                if entrada == str(n):
+                                    linha = n - 1
+                                    linha_valida = True
+
+                            if linha_valida == False:
+                                print("Entrada inválida! Digite um número de 1 a 3.")
+
+                        coluna_valida = False
+
+                        while coluna_valida == False:
+                            entrada = input("Escolha a COLUNA (1 a 3): ")
+
+                            for n in range(1, 4):
+                                if entrada == str(n):
+                                    coluna = n - 1
+                                    coluna_valida = True
+
+                            if coluna_valida == False:
+                                print("Entrada inválida! Digite um número de 1 a 3.")
+
+                        if tabuleiro[linha][coluna] == " ":
+                            tabuleiro[linha][coluna] = simbolo
+                            jogada_valida = True
+                        else:
+                            print("Casa já ocupada! Escolha outra casa.")
+
+                    
+                
+                    # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
+                    venceu = False
+
+                    cont_diagonal_principal = 0
+                    cont_diagonal_secundaria = 0
+
+                    for i in range(3):
+
+                        if (tabuleiro[i][0] == simbolo and
+                            tabuleiro[i][1] == simbolo and
+                            tabuleiro[i][2] == simbolo):
+                            venceu = True
+
+                        if (tabuleiro[0][i] == simbolo and
+                            tabuleiro[1][i] == simbolo and
+                            tabuleiro[2][i] == simbolo):
+                            venceu = True
+
+                        if tabuleiro[i][i] == simbolo:
+                            cont_diagonal_principal += 1
+
+                        if tabuleiro[i][2 - i] == simbolo:
+                            cont_diagonal_secundaria += 1
+
+                    if (cont_diagonal_principal == 3 or
+                        cont_diagonal_secundaria == 3):
                         venceu = True
 
-                    if (tabuleiro[0][i] == simbolo and
-                        tabuleiro[1][i] == simbolo and
-                        tabuleiro[2][i] == simbolo):
-                        venceu = True
+                    # [MARIA LETÍCIA] CONTADOR DE RODADAS
+                    rodadas += 1
 
-                    if tabuleiro[i][i] == simbolo:
-                        cont_diagonal_principal += 1
+                    # [MARIA LETÍCIA] - DETECÇÃO DE EMPATE
+                    vazias = 0
 
-                    if tabuleiro[i][2 - i] == simbolo:
-                        cont_diagonal_secundaria += 1
+                    for i in range(3):
+                        for j in range(3):
+                            if tabuleiro[i][j] == " ":
+                                vazias += 1
 
-                if (cont_diagonal_principal == 3 or
-                    cont_diagonal_secundaria == 3):
-                    venceu = True
+                    # [MARIA LETÍCIA] - ENCERRAMENTO DA PARTIDA
+                    if venceu == True:
+                        partida_terminou = True
+                        print(f"Jogador {simbolo} venceu!")
 
-                # [MARIA LETÍCIA] CONTADOR DE RODADAS
-                rodadas += 1
+                    elif vazias == 0:
+                        partida_terminou = True
 
-                # [MARIA LETÍCIA] - DETECÇÃO DE EMPATE
-                vazias = 0
+                    else:
+                        vez_de_x = not vez_de_x
 
-                for i in range(3):
-                    for j in range(3):
-                        if tabuleiro[i][j] == " ":
-                            vazias += 1
 
-                # [MARIA LETÍCIA] - ENCERRAMENTO DA PARTIDA
+                # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
+                total_partidas += 1
+
                 if venceu == True:
-                    partida_terminou = True
-                    print(f"Jogador {simbolo} venceu!")
+                    print(f"*** Jogador {simbolo} venceu a partida em {rodadas} rodadas! ***")
 
-                elif vazias == 0:
-                    partida_terminou = True
+                    if simbolo == "X":
+                        vitorias_x += 1
+                        serie_x += 1
+                        sequencia_x += 1
+                        sequencia_o = 0
 
-                else:
-                    vez_de_x = not vez_de_x
+                        if sequencia_x > maior_sequencia_x:
+                            maior_sequencia_x = sequencia_x
 
+                    else:
+                        vitorias_o += 1
+                        serie_o += 1
+                        sequencia_o += 1
+                        sequencia_x = 0
 
-            # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
-            total_partidas += 1
-
-            if venceu == True:
-                print(f"*** Jogador {simbolo} venceu a partida em {rodadas} rodadas! ***")
-
-                if simbolo == "X":
-                    vitorias_x += 1
-                    serie_x += 1
-                    sequencia_x += 1
-                    sequencia_o = 0
-
-                    if sequencia_x > maior_sequencia_x:
-                        maior_sequencia_x = sequencia_x
+                        if sequencia_o > maior_sequencia_o:
+                            maior_sequencia_o = sequencia_o
 
                 else:
-                    vitorias_o += 1
-                    serie_o += 1
-                    sequencia_o += 1
+                    print("*** Deu empate! Ninguém pontua na série. ***")
+                    empates += 1
                     sequencia_x = 0
-
-                    if sequencia_o > maior_sequencia_o:
-                        maior_sequencia_o = sequencia_o
-
+                    sequencia_o = 0
+            # [MARIA CLARA] - FIM DA SÉRIE
+            print()
+            if serie_x > serie_o:
+                campeonatos_x += 1
+                print(f"##### O jogador X é o CAMPEÃO da série ({serie_x} x {serie_o})! #####")
             else:
-                print("*** Deu empate! Ninguém pontua na série. ***")
-                empates += 1
-                sequencia_x = 0
-                sequencia_o = 0
+                campeonatos_o += 1
+                print(f"##### O jogador O é o CAMPEÃO da série ({serie_o} x {serie_x})! #####")
+                
+            resposta_valida = False
+            while resposta_valida == False:
+                resposta = input("Jogar outro campeonato (mesma série)? (s/n): ")
+                if resposta == "S" or resposta == "s":
+                    resposta_valida = True
+                    jogar_campeonato = True
+                elif resposta == "N" or resposta == "n":
+                    resposta_valida = True
+                    jogar_campeonato = False
+                else:
+                    print("Entrada inválida! Digite s  para sim ou n para não.")        
+                             
     elif opcao == 2:
         # [MARIA CLARA] - REGRAS DO JOGO
         print()
@@ -249,7 +272,7 @@ while menu_ativo == True:
         print("------------------------------------------------")
 
     elif opcao == 3:
-        # [MARIA CLARA] BLOCO 11 - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
+        # [MARIA CLARA] BLOCO - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
         print()
 
         if total_partidas == 0:
@@ -266,7 +289,22 @@ while menu_ativo == True:
             print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
             print(f"Empates: {empates} ({pct_empates:.1f}%)")
             print("----------------------------------------------")
-
-    elif opcao == 4:
+    else:
+        #[MARIA CLARA] - SAIR: ESTATÍSTICAS DA SESSÃO
+        print()
+        print("============ ESTATÍSTICAS DA SESSÃO ============")
+        if total_partidas == 0:
+            print("Nenhuma partida foi jogada nesta sessão.")
+        else:
+            pct_x = vitorias_x / total_partidas * 100
+            pct_o = vitorias_o / total_partidas * 100
+            pct_empates = empates / total_partidas * 100
+            print(f"Total de partidas: {total_partidas}")
+            print(f"Vitórias de X: {vitorias_x} ({pct_x:.1f}%)")
+            print(f"Vitórias de O: {vitorias_o} ({pct_o:.1f}%)")
+            print(f"Empates: {empates} ({pct_empates:.1f}%)")
+            print(f"Maior sequência de vitórias seguidas - X: {maior_sequencia_x} | O: {maior_sequencia_o}")
+            print(f"Campeonatos vencidos - X: {campeonatos_x} | O: {campeonatos_o}")
+        print("================================================") 
         print("Obrigado por jogar!")
-        menu_ativo = False
+        menu_ativo = False        
