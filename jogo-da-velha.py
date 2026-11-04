@@ -81,33 +81,33 @@ while menu_ativo == True:
             # [MARIA LETÍCIA] - LAÇO DA PARTIDA
     
             for i in range(3):
-                 for j in range(3):
+                for j in range(3):
                     tabuleiro[i][j] = " "
 
             rodadas = 0
-            partida_terminou = False
+            partida_terminou = False    
             venceu = False
             vez_de_x = True
 
-    while partida_terminou == False:
+            while partida_terminou == False:
 
-            # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
-            print()
-            print("      1   2   3")
-
-            for i in range(3):
-                print(f"  {i + 1}  ", end="")
-
-                for j in range(3):
-                    print(f" {tabuleiro[i][j]} ", end="")
-
-                    if j < 2:
-                        print("|", end="")
-
+                # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
                 print()
+                print("      1   2   3")
 
-                if i < 2:
-                    print("     ---+---+---")
+                for i in range(3):
+                    print(f"  {i + 1}  ", end="")
+
+                    for j in range(3):
+                        print(f" {tabuleiro[i][j]} ", end="")
+
+                        if j < 2:
+                            print("|", end="")
+
+                    print()
+
+                    if i < 2:
+                        print("     ---+---+---")
 
                 # [MARIA LETÍCIA] INDICADOR DO JOGADOR
                 if vez_de_x == True:
@@ -155,39 +155,30 @@ while menu_ativo == True:
 
                 
             
-                # BLOCO 7 - VERIFICAÇÃO DE VITÓRIA
-                # O for percorre as três linhas e colunas do tabuleiro.
-                # Os if verificam se o jogador completou uma linha ou coluna.
-                # Os contadores verificam as duas diagonais.
+                # [MARIA LETÍCIA] - VERIFICAÇÃO DE VITÓRIA
                 venceu = False
 
-                # Contadores das diagonais
                 cont_diagonal_principal = 0
                 cont_diagonal_secundaria = 0
 
                 for i in range(3):
 
-                    # Verifica vitória na linha
                     if (tabuleiro[i][0] == simbolo and
                         tabuleiro[i][1] == simbolo and
                         tabuleiro[i][2] == simbolo):
                         venceu = True
 
-                    # Verifica vitória na coluna
                     if (tabuleiro[0][i] == simbolo and
                         tabuleiro[1][i] == simbolo and
                         tabuleiro[2][i] == simbolo):
                         venceu = True
 
-                    # Verifica diagonal principal
                     if tabuleiro[i][i] == simbolo:
                         cont_diagonal_principal += 1
 
-                    # Verifica diagonal secundária
                     if tabuleiro[i][2 - i] == simbolo:
                         cont_diagonal_secundaria += 1
 
-                # Verifica se alguma diagonal foi completada
                 if (cont_diagonal_principal == 3 or
                     cont_diagonal_secundaria == 3):
                     venceu = True
@@ -195,11 +186,7 @@ while menu_ativo == True:
                 # [MARIA LETÍCIA] CONTADOR DE RODADAS
                 rodadas += 1
 
-                # BLOCO 8 - DETECÇÃO DE EMPATE
-                # O primeiro for percorre as linhas do tabuleiro.
-                # O segundo for percorre as colunas de cada linha.
-                # O if verifica se a casa está vazia.
-                # A variável vazias conta as casas não preenchidas.
+                # [MARIA LETÍCIA] - DETECÇÃO DE EMPATE
                 vazias = 0
 
                 for i in range(3):
@@ -207,10 +194,7 @@ while menu_ativo == True:
                         if tabuleiro[i][j] == " ":
                             vazias += 1
 
-                # BLOCO 9 - ENCERRAMENTO DA PARTIDA
-                # Se venceu for True, a partida termina por vitória.
-                # Se vazias for igual a zero, ocorre empate.
-                # Caso contrário, o jogador passa a vez.
+                # [MARIA LETÍCIA] - ENCERRAMENTO DA PARTIDA
                 if venceu == True:
                     partida_terminou = True
                     print(f"Jogador {simbolo} venceu!")
@@ -219,10 +203,10 @@ while menu_ativo == True:
                     partida_terminou = True
 
                 else:
-                        vez_de_x = not vez_de_x
+                    vez_de_x = not vez_de_x
 
 
-                        # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
+            # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
             total_partidas += 1
 
             if venceu == True:
@@ -251,38 +235,38 @@ while menu_ativo == True:
                 empates += 1
                 sequencia_x = 0
                 sequencia_o = 0
-            if opcao == 2:
-                # [MARIA CLARA] - REGRAS DO JOGO
-                print()
-                print("-------------------- REGRAS --------------------")
-                print("1. O tabuleiro tem 3 linhas e 3 colunas.")
-                print("2. Dois jogadores se alternam: X e O.")
-                print("3. Informe a linha e a coluna de uma casa vazia.")
-                print("4. Vence quem completar uma linha, coluna ou diagonal.")
-                print("5. Se o tabuleiro encher sem vencedor, ocorre empate.")
-                print("6. Melhor de 3: vence quem ganhar 2 partidas.")
-                print("7. Melhor de 5: vence quem ganhar 3 partidas.")
-                print("------------------------------------------------")
+    elif opcao == 2:
+        # [MARIA CLARA] - REGRAS DO JOGO
+        print()
+        print("-------------------- REGRAS --------------------")
+        print("1. O tabuleiro tem 3 linhas e 3 colunas.")
+        print("2. Dois jogadores se alternam: X e O.")
+        print("3. Informe a linha e a coluna de uma casa vazia.")
+        print("4. Vence quem completar uma linha, coluna ou diagonal.")
+        print("5. Se o tabuleiro encher sem vencedor, ocorre empate.")
+        print("6. Melhor de 3: vence quem ganhar 2 partidas.")
+        print("7. Melhor de 5: vence quem ganhar 3 partidas.")
+        print("------------------------------------------------")
 
-            elif opcao == 3:
-                # [MARIA CLARA] BLOCO 11 - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
-                print()
+    elif opcao == 3:
+        # [MARIA CLARA] BLOCO 11 - EXIBIÇÃO DO PLACAR COM PORCENTAGENS
+        print()
 
-                if total_partidas == 0:
-                    print("Nenhuma partida foi jogada ainda.")
+        if total_partidas == 0:
+            print("Nenhuma partida foi jogada ainda.")
 
-                else:
-                    pct_x = vitorias_x / total_partidas * 100
-                    pct_o = vitorias_o / total_partidas * 100
-                    pct_empates = empates / total_partidas * 100
+        else:
+            pct_x = vitorias_x / total_partidas * 100
+            pct_o = vitorias_o / total_partidas * 100
+            pct_empates = empates / total_partidas * 100
 
-                    print("-------------- PLACAR DA SESSÃO --------------")
-                    print(f"Partidas jogadas: {total_partidas}")
-                    print(f"X: {vitorias_x} vitórias ({pct_x:.1f}%)")
-                    print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
-                    print(f"Empates: {empates} ({pct_empates:.1f}%)")
-                    print("----------------------------------------------")
+            print("-------------- PLACAR DA SESSÃO --------------")
+            print(f"Partidas jogadas: {total_partidas}")
+            print(f"X: {vitorias_x} vitórias ({pct_x:.1f}%)")
+            print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
+            print(f"Empates: {empates} ({pct_empates:.1f}%)")
+            print("----------------------------------------------")
 
-            elif opcao == 4:
-                print("Obrigado por jogar!")
-                menu_ativo = False
+    elif opcao == 4:
+        print("Obrigado por jogar!")
+        menu_ativo = False
