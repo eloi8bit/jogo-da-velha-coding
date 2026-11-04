@@ -38,17 +38,50 @@ O programa verifica se algum jogador venceu utilizando laços `for` e condiçõe
 
 ## Desafio escolhido
 
-Em construção.
+Campeonato "melhor de N":
+
+O jogador escolhe uma série "melhor de 3" ou "melhor de 5". A escolha é validada: só são aceitos os valores 3 e 5, e qualquer outra entrada mostra uma mensagem de erro e pede de novo, sem o programa fechar.
+
+O número de vitórias necessárias é calculado por `vitorias_necessarias = int(melhor_de / 2) + 1` (2 vitórias na melhor de 3 e 3 vitórias na melhor de 5).
+
+A série continua enquanto `serie_x < vitorias_necessarias and serie_o < vitorias_necessarias`. Usamos `and` porque a série só acaba quando um dos dois jogadores atinge a maioria. Empates não contam para a série: a partida é jogada de novo.
+
+No fim da série, o programa anuncia o campeão, soma um em `campeonatos_x` ou `campeonatos_o` e pergunta se o jogador quer outro campeonato com a mesma série. A resposta aceita `s`, `S`, `n` ou `N` (validada com `or`). Se for `s`, uma nova série começa com o placar zerado.
+
+## Bônus: estatísticas da sessão 
+
+Ao escolher **Sair**, o programa mostra o total de partidas, as vitórias de X e de O com porcentagem, os empates, a maior sequência de vitórias seguidas de cada jogador e os campeonatos vencidos. Se nenhuma partida foi jogada (`total_partidas == 0`), ele avisa isso em vez de calcular as porcentagens, evitando divisão por zero.
 
 ## Divisão de tarefas
 
-**Maria Letícia**
+### Maria Heloísa Mendes: tabuleiro e validação:
 
-- Adiciona verificação de vitória em linhas e colunas com `for`.
-- Adiciona verificação das diagonais com contadores.
-- Adiciona detecção de empate com `for` aninhado e mensagens de resultado.
-- Comenta os Blocos 7, 8 e 9 e adiciona teste de mesa dos laços de vitória.
+- Cria a estrutura inicial do projeto com a matriz do tabuleiro.
+- Adiciona a exibição do tabuleiro com `for` aninhado e números de linhas e colunas.
+- Adiciona a limpeza da matriz e a validação da linha escolhida.
+- Adiciona a validação da coluna e a checagem de casa ocupada.
+- Comenta os laços aninhados e adiciona o teste de mesa da exibição.
+- Adiciona a tabela de testes de validação em docs.
+
+### Maria Letícia Xavier: regras, turnos e vitória:
+
+- Adiciona a seção Regras do jogo no README.
+- Adiciona o laço da partida com controle de turno e contador de rodadas.
+- Adiciona a verificação de vitória em linhas e colunas com `for`.
+- Adiciona a verificação das diagonais com contadores.
+- Adiciona a detecção de empate com `for` aninhado e mensagens de resultado.
+- Comenta os Blocos 7, 8 e 9 e adiciona o teste de mesa dos laços de vitória.
 - Documenta a verificação de vitória e empate no README.
+
+### Maria Clara Araújo: menu, placar e campeonato:
+
+- Adiciona as variáveis do placar e as instruções de execução no README.
+- Adiciona o menu principal com `while` e validação da opção.
+- Adiciona a escolha da série melhor de N e a tela de regras.
+- Adiciona a atualização e a exibição do placar com porcentagens.
+- Integra a partida ao campeonato melhor de N e ao menu.
+- Adiciona o fim de série com campeão, jogar novamente e estatísticas ao sair.
+- Finaliza o README com desafios escolhidos e divisão de tarefas.
 
 ## Testes
 
