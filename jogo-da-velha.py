@@ -70,6 +70,7 @@ while menu_ativo == True:
         vitorias_necessarias = int(melhor_de / 2) + 1
 
         print(f"Série melhor de {melhor_de}: vence quem fizer {vitorias_necessarias} vitórias primeiro.")
+        print("Empates não contam para a série: a partida é jogada de novo.")
         
         #[MARIA CLARA] - INICIALIZAÇÃO DO PLACAR DA SÉRIE
         jogar_campeonato = True
@@ -92,7 +93,7 @@ while menu_ativo == True:
                 vez_de_x = inicia_x
 
                 while partida_terminou == False:
-
+                    
                     # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
                     print()
                     print("      1   2   3")
@@ -207,7 +208,19 @@ while menu_ativo == True:
                     else:
                         vez_de_x = not vez_de_x
 
-
+                print()
+                print("      1   2   3")
+                for i in range(3):
+                    print(f"  {i + 1}  ", end="")
+                    for j in range(3):
+                        print(f" {tabuleiro[i][j]} ", end="")
+                        if j < 2:
+                            print("|", end="")
+                    print()
+                    if i < 2:
+                        print("     ---+---+---")
+                print()
+                
                 # [MARIA CLARA] - ATUALIZAÇÃO DO PLACAR E ESTATÍSTICAS
                 total_partidas += 1
 
@@ -237,7 +250,20 @@ while menu_ativo == True:
                     empates += 1
                     sequencia_x = 0
                     sequencia_o = 0
-                inicia_x = not inicia_x
+                inicia_x = not inicia_x 
+                
+                # [MARIA CLARA] - EXIBIÇÃO DO PLACAR ACUMULADO (com porcentagens)
+                pct_x = vitorias_x / total_partidas * 100
+                pct_o = vitorias_o / total_partidas * 100
+                pct_empates = empates / total_partidas * 100
+                print()
+                print("-------------- PLACAR DA SESSÃO --------------")
+                print(f"Partidas jogadas: {total_partidas}")
+                print(f"X: {vitorias_x} vitórias ({pct_x:.1f}%)")
+                print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
+                print(f"Empates: {empates} ({pct_empates:.1f}%)")
+                print(f"Série atual: X {serie_x} x {serie_o} O")
+                print("----------------------------------------------")
             # [MARIA CLARA] - FIM DA SÉRIE
             print()
             if serie_x > serie_o:
@@ -265,11 +291,13 @@ while menu_ativo == True:
         print("-------------------- REGRAS --------------------")
         print("1. O tabuleiro tem 3 linhas e 3 colunas.")
         print("2. Dois jogadores se alternam: X e O.")
-        print("3. Informe a linha e a coluna de uma casa vazia.")
-        print("4. Vence quem completar uma linha, coluna ou diagonal.")
-        print("5. Se o tabuleiro encher sem vencedor, ocorre empate.")
-        print("6. Melhor de 3: vence quem ganhar 2 partidas.")
-        print("7. Melhor de 5: vence quem ganhar 3 partidas.")
+        print("3. Na sua vez, informe a LINHA e a COLUNA de uma casa vazia (1 a 3).")
+        print("4. Vence a partida quem completar uma linha, uma coluna")
+        print("   ou uma diagonal com o seu símbolo.")
+        print("5. Se o tabuleiro encher sem vencedor, é empate (não conta na série).")
+        print("6. No campeonato 'melhor de N', vence quem garantir a maioria das")
+        print("   vitórias primeiro (2 na melhor de 3 | 3 na melhor de 5).")
+        print("7. A cada partida, quem começa é alternado.")
         print("------------------------------------------------")
 
     elif opcao == 3:
@@ -289,6 +317,7 @@ while menu_ativo == True:
             print(f"X: {vitorias_x} vitórias ({pct_x:.1f}%)")
             print(f"O: {vitorias_o} vitórias ({pct_o:.1f}%)")
             print(f"Empates: {empates} ({pct_empates:.1f}%)")
+            print(f"Campeonatos vencidos: X {campeonatos_x} x {campeonatos_o} O")
             print("----------------------------------------------")
     else:
         #[MARIA CLARA] - SAIR: ESTATÍSTICAS DA SESSÃO
