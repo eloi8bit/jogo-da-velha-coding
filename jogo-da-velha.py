@@ -2,7 +2,7 @@
 # JOGO DA VELHA - CAMPEONATO "MELHOR DE N"
 # Disciplina: Coding | UNINASSAU | Prof. M.Sc. Tiago Martins Ribeiro
 # Integrantes: Maria Heloísa Mendes, Maria Clara Araújo, Maria Letícia Xavier
-# Como executar: python jogo_da_velha.py
+# Como executar: python jogo-da-velha.py
 # =====================================================================
 
 # [HELOÍSA] MATRIZ DO TABULEIRO
@@ -200,7 +200,6 @@ while menu_ativo == True:
                     # [MARIA LETÍCIA] - ENCERRAMENTO DA PARTIDA
                     if venceu == True:
                         partida_terminou = True
-                        print(f"Jogador {simbolo} venceu!")
 
                     elif vazias == 0:
                         partida_terminou = True
