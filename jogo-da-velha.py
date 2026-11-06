@@ -82,6 +82,7 @@ while menu_ativo == True:
 
                 # [MARIA LETÍCIA] - LAÇO DA PARTIDA
                 # [HELOÍSA] - LIMPEZA DA MATRIZ
+        
                 for i in range(3):
                     for j in range(3):
                         tabuleiro[i][j] = " "
