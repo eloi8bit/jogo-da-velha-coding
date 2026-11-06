@@ -81,7 +81,7 @@ while menu_ativo == True:
             while serie_x < vitorias_necessarias and serie_o < vitorias_necessarias:
 
                 # [MARIA LETÍCIA] - LAÇO DA PARTIDA
-        
+                # [HELOÍSA] - LIMPEZA DA MATRIZ
                 for i in range(3):
                     for j in range(3):
                         tabuleiro[i][j] = " "
@@ -93,7 +93,7 @@ while menu_ativo == True:
 
                 while partida_terminou == False:
 
-                    # [MARIA LETÍCIA] EXIBIÇÃO DO TABULEIRO
+                    # [HELOÍSA] EXIBIÇÃO DO TABULEIRO
                     print()
                     print("      1   2   3")
 
@@ -119,7 +119,7 @@ while menu_ativo == True:
 
                     print(f"Rodada {rodadas + 1} - Vez do jogador {simbolo}")
 
-                    # [MARIA LETÍCIA] LEITURA E VALIDAÇÃO DA JOGADA
+                    # [HELOÍSA] LEITURA E VALIDAÇÃO DA JOGADA
                     jogada_valida = False
 
                     while jogada_valida == False:
