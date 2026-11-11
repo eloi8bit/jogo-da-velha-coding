@@ -239,7 +239,7 @@ while menu_ativo == True:
                     sequencia_x = 0
                     sequencia_o = 0
 
-                    inicia_x = not inicia_x
+                inicia_x = not inicia_x
                     
             # [MARIA CLARA] - FIM DA SÉRIE
             print()
