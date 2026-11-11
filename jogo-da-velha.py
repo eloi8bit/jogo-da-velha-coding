@@ -90,7 +90,7 @@ while menu_ativo == True:
                 rodadas = 0
                 partida_terminou = False    
                 venceu = False
-                vez_de_x = True
+                vez_de_x = inicia_x 
 
                 while partida_terminou == False:
 
@@ -238,6 +238,9 @@ while menu_ativo == True:
                     empates += 1
                     sequencia_x = 0
                     sequencia_o = 0
+
+                    inicia_x = not inicia_x
+                    
             # [MARIA CLARA] - FIM DA SÉRIE
             print()
             if serie_x > serie_o:
